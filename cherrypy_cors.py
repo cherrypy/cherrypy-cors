@@ -1,7 +1,5 @@
 import re
 
-import six
-
 import cherrypy
 from cherrypy.lib import set_vary_header
 import httpagentparser
@@ -78,8 +76,13 @@ def expose_public(expose_headers=None):
     _get_cors().expose_public(expose_headers)
 
 
-def preflight(allowed_methods, allowed_headers=None, allow_credentials=False,
-              max_age=None, origins=None):
+def preflight(
+    allowed_methods,
+    allowed_headers=None,
+    allow_credentials=False,
+    max_age=None,
+    origins=None,
+):
     """Adds CORS `preflight`_ support to a `HTTP OPTIONS` request.
 
     :param allowed_methods: List of supported `HTTP` methods
@@ -124,8 +127,9 @@ def preflight(allowed_methods, allowed_headers=None, allow_credentials=False,
                         self._do_other_things()
 
     """
-    if _get_cors().preflight(allowed_methods, allowed_headers,
-                             allow_credentials, max_age, origins):
+    if _get_cors().preflight(
+        allowed_methods, allowed_headers, allow_credentials, max_age, origins
+    ):
         _safe_caching_headers()
         return True
     return False
@@ -138,6 +142,7 @@ def install():
 
 class CORS(object):
     """A generic CORS handler."""
+
     def __init__(self, req_headers, resp_headers):
         self.req_headers = req_headers
         self.resp_headers = resp_headers
@@ -153,8 +158,9 @@ class CORS(object):
         self._add_public_origin()
         self._add_expose_headers(expose_headers)
 
-    def preflight(self, allowed_methods, allowed_headers, allow_credentials,
-                  max_age, origins):
+    def preflight(
+        self, allowed_methods, allowed_headers, allow_credentials, max_age, origins
+    ):
         if self._is_valid_preflight_request(allowed_headers, allowed_methods, origins):
             self._add_origin_and_credentials_headers(allow_credentials)
             self._add_prefligt_headers(allowed_methods, max_age)
@@ -169,14 +175,13 @@ class CORS(object):
         if origins is None:
             origins = [self.origin]
         origins = map(self._make_regex, origins)
-        return (
-            self.origin is not None
-            and any(origin.match(self.origin) for origin in origins)
+        return self.origin is not None and any(
+            origin.match(self.origin) for origin in origins
         )
 
     @staticmethod
     def _make_regex(pattern):
-        if isinstance(pattern, six.string_types):
+        if isinstance(pattern, str):
             pattern = re.compile(re.escape(pattern) + '$')
         return pattern
 
@@ -201,10 +206,7 @@ class CORS(object):
         return self.req_headers.get(CORS_REQUEST_HEADERS)
 
     def _has_valid_method(self, allowed_methods):
-        return (
-            self.requested_method and
-            self.requested_method in allowed_methods
-        )
+        return self.requested_method and self.requested_method in allowed_methods
 
     def _valid_headers(self, allowed_headers):
         if self.requested_headers and allowed_headers:
@@ -215,9 +217,9 @@ class CORS(object):
 
     def _is_valid_preflight_request(self, allowed_headers, allowed_methods, origins):
         return (
-            self._is_valid_origin(origins) and
-            self._has_valid_method(allowed_methods) and
-            self._valid_headers(allowed_headers)
+            self._is_valid_origin(origins)
+            and self._has_valid_method(allowed_methods)
+            and self._valid_headers(allowed_headers)
         )
 
     def _add_prefligt_headers(self, allowed_methods, max_age):
@@ -230,10 +232,7 @@ class CORS(object):
 
 
 def _get_cors():
-    return CORS(
-        cherrypy.serving.request.headers,
-        cherrypy.serving.response.headers
-    )
+    return CORS(cherrypy.serving.request.headers, cherrypy.serving.response.headers)
 
 
 def _safe_caching_headers():
