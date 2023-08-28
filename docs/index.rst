@@ -8,7 +8,7 @@ Welcome to |project| documentation!
 .. toctree::
    :maxdepth: 1
 
-.. include:: ../README.rst
+   history
 
 API
 ===
