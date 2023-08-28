@@ -1,15 +1,15 @@
+Welcome to |project| documentation!
+===================================
+
 .. include:: ../README.rst
 
 API
 ===
 
-.. autofunction:: cherrypy_cors.expose
-.. autofunction:: cherrypy_cors.expose_public
-.. autofunction:: cherrypy_cors.preflight
-.. autofunction:: cherrypy_cors.install
-
-.. autoclass:: cherrypy_cors.CORS
-
+.. automodule:: cherrypy_cors
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 
 .. _Access-Control-Allow-Origin: http://www.w3.org/TR/cors/#access-control-allow-origin-response-header
