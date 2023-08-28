@@ -13,20 +13,20 @@ class CORSRequests:
         self.assertNoHeader('Access-Control-Allow-Origin')
 
     def test_CORS_request(self):
-        headers = list({
-            'Origin': 'https://example.com',
-        }.items())
+        headers = list(
+            {
+                'Origin': 'https://example.com',
+            }.items()
+        )
         self.getPage('/', headers=headers)
         self.assertBody('hello')
         self.assertHeader('Access-Control-Allow-Origin', 'https://example.com')
 
 
 class CORSSimpleServerTests(CORSRequests, helper.CPWebCase):
-
     @staticmethod
     def setup_server():
         class Root:
-
             @cherrypy.expose
             def index(self):
                 return "hello"
@@ -42,11 +42,9 @@ class CORSSimpleServerTests(CORSRequests, helper.CPWebCase):
 
 
 class CORSSimpleDecoratorTests(CORSRequests, helper.CPWebCase):
-
     @staticmethod
     def setup_server():
         class Root:
-
             @cherrypy.expose
             @cherrypy_cors.tools.expose()
             def index(self):
@@ -67,44 +65,50 @@ class OriginRequests:
         self.assertNoHeader('Access-Control-Allow-Origin')
 
     def test_matching_origin_request(self):
-        headers = list({
-            'Origin': self.trusted_origin,
-        }.items())
+        headers = list(
+            {
+                'Origin': self.trusted_origin,
+            }.items()
+        )
         self.getPage('/', headers=headers)
         self.assertBody('hello')
         self.assertHeader('Access-Control-Allow-Origin', self.trusted_origin)
 
     def test_non_matching_origin_request(self):
-        headers = list({
-            'Origin': self.untrusted_origin,
-        }.items())
+        headers = list(
+            {
+                'Origin': self.untrusted_origin,
+            }.items()
+        )
         self.getPage('/', headers=headers)
         self.assertBody('hello')
         self.assertNoHeader('Access-Control-Allow-Origin')
 
     def test_preflight_request(self):
-        headers = list({
-            'Origin': self.trusted_origin,
-        }.items())
+        headers = list(
+            {
+                'Origin': self.trusted_origin,
+            }.items()
+        )
         self.getPage('/', method='OPTIONS', headers=headers)
         self.assertBody('hello')
         self.assertHeader('Access-Control-Allow-Origin', self.trusted_origin)
 
     def test_non_matching_preflight_request(self):
-        headers = list({
-            'Origin': self.untrusted_origin,
-        }.items())
+        headers = list(
+            {
+                'Origin': self.untrusted_origin,
+            }.items()
+        )
         self.getPage('/', method='OPTIONS', headers=headers)
         self.assertBody('hello')
         self.assertNoHeader('Access-Control-Allow-Origin')
 
 
 class CORSOriginServerTests(OriginRequests, helper.CPWebCase):
-
     @staticmethod
     def setup_server():
         class Root:
-
             @cherrypy.expose
             def index(self):
                 return "hello"
@@ -129,7 +133,6 @@ class CORSOriginRegexTests(OriginRequests, helper.CPWebCase):
     @staticmethod
     def setup_server():
         class Root:
-
             @cherrypy.expose
             def index(self):
                 return "hello"

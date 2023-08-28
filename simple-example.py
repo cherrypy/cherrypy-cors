@@ -37,7 +37,6 @@ import cherrypy_cors
 
 
 class MyResource:
-
     @cherrypy.expose()
     def index(self):
         return '{"value": "success"}\n'
