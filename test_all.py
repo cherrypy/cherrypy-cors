@@ -6,7 +6,7 @@ from cherrypy.test import helper
 import cherrypy_cors
 
 
-class CORSRequests(object):
+class CORSRequests:
     def test_bare_request(self):
         self.getPage('/')
         self.assertBody('hello')
@@ -57,7 +57,7 @@ class CORSSimpleDecoratorTests(CORSRequests, helper.CPWebCase):
         cherrypy_cors.install()
 
 
-class OriginRequests(object):
+class OriginRequests:
     trusted_origin = 'https://example.com'
     untrusted_origin = 'http://attacker.com'
 

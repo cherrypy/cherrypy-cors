@@ -140,7 +140,7 @@ def install():
     cherrypy._cptree.Application.toolboxes.update(cors=tools)
 
 
-class CORS(object):
+class CORS:
     """A generic CORS handler."""
 
     def __init__(self, req_headers, resp_headers):
