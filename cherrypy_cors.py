@@ -29,9 +29,9 @@ def expose(allow_credentials=False, expose_headers=None, origins=None):
     :type allow_credentials: bool
     :param expose_headers: List of headers clients will be able to access
                            (see `Access-Control-Expose-Headers`_).
-    :type expose_headers: list or NoneType
+    :type expose_headers: list or None
     :param origins: List of allowed origins clients must reference.
-    :type origins: list or NoneType
+    :type origins: list or None
 
     :returns: Whether the resource is being exposed.
     :rtype: bool
@@ -69,9 +69,9 @@ def expose_public(expose_headers=None):
 
     :param expose_headers: List of headers clients will be able to access
                            (see `Access-Control-Expose-Headers`_).
-    :type expose_headers: list or NoneType
+    :type expose_headers: list or None
 
-    :rtype: NoneType
+    :rtype: None
     """
     _get_cors().expose_public(expose_headers)
 
@@ -87,10 +87,10 @@ def preflight(
 
     :param allowed_methods: List of supported `HTTP` methods
                             (see `Access-Control-Allow-Methods`_).
-    :type allowed_methods: list or NoneType
+    :type allowed_methods: list or None
     :param allowed_headers: List of supported `HTTP` headers
                             (see `Access-Control-Allow-Headers`_).
-    :type allowed_headers: list or NoneType
+    :type allowed_headers: list or None
     :param allow_credentials: Use credentials to make cookies work
                               (see `Access-Control-Allow-Credentials`_).
     :type allow_credentials: bool
@@ -98,7 +98,7 @@ def preflight(
                     (see `Access-Control-Max-Age`_).
     :type max_age: int
     :param origins: List of allowed origins clients must reference.
-    :type origins: list or NoneType
+    :type origins: list or None
 
     :returns: Whether the preflight is allowed.
     :rtype: bool
