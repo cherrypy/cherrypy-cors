@@ -1,6 +1,13 @@
 Welcome to |project| documentation!
 ===================================
 
+.. sidebar-links::
+   :home:
+   :pypi:
+
+.. toctree::
+   :maxdepth: 1
+
 .. include:: ../README.rst
 
 API
