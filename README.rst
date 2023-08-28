@@ -1,21 +1,23 @@
-.. image:: https://img.shields.io/pypi/v/cherrypy_cors.svg
-   :target: https://pypi.io/project/cherrypy_cors
+.. image:: https://img.shields.io/pypi/v/cherrypy-cors.svg
+   :target: `PyPI link`_
 
-.. image:: https://img.shields.io/pypi/pyversions/cherrypy_cors.svg
+.. image:: https://img.shields.io/pypi/pyversions/cherrypy-cors.svg
+   :target: `PyPI link`_
 
-.. image:: https://img.shields.io/pypi/dm/cherrypy_cors.svg
+.. _PyPI link: https://pypi.org/project/cherrypy-cors
 
-.. image:: https://img.shields.io/travis/yougov/cherrypy-cors/master.svg
-   :target: http://travis-ci.org/yougov/cherrypy-cors
+.. image:: https://github.com/cherrypy/cherrypy-cors/workflows/Automated%20Tests/badge.svg
+   :target: https://github.com/cherrypy/cherrypy-cors/actions?query=workflow%3A%22Automated+Tests%22
+   :alt: Automated Tests
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: Black
+
+.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
+..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
 
 CORS support for CherryPy
-
-License
-=======
-
-License is indicated in the project metadata (typically one or more
-of the Trove classifiers). For more details, see `this explanation
-<https://github.com/jaraco/skeleton/issues/1>`_.
 
 In a nutshell
 =============
