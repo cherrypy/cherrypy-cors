@@ -3,7 +3,7 @@
 
 .. image:: https://img.shields.io/pypi/pyversions/cherrypy-cors.svg
 
-.. image:: https://github.com/cherrypy/cherrypy-cors/workflows/tests/badge.svg
+.. image:: https://github.com/cherrypy/cherrypy-cors/actions/workflows/main.yml/badge.svg
    :target: https://github.com/cherrypy/cherrypy-cors/actions?query=workflow%3A%22tests%22
    :alt: tests
 
