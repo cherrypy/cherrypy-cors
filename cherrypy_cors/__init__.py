@@ -1,9 +1,8 @@
 import re
 
 import cherrypy
-from cherrypy.lib import set_vary_header
 import httpagentparser
-
+from cherrypy.lib import set_vary_header
 
 CORS_ALLOW_METHODS = 'Access-Control-Allow-Methods'
 CORS_ALLOW_ORIGIN = 'Access-Control-Allow-Origin'
